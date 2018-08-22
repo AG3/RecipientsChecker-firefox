@@ -15,6 +15,17 @@
       "matches": ["*://*.mail.sina.com.cn/*"],
       "js": ["borderify.js"]
     }
-  ]
+  ],
+
+  "permissions": [ 
+    "storage",
+    "webRequest",
+    "http://*/",
+    "https://*/"
+  ],
+
+  "background": {
+    "scripts": ["background-script.js"]
+  }
 
 }

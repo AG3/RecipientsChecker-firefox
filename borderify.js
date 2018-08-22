@@ -4,8 +4,22 @@ var reciverAddrList = t[0]
 console.log(reciverAddrList);
 var config = { attributes: false, childList: true, subtree: true };
 
+var domainList = null;
+
+function handleResponse(message) {
+	domainList = message;
+	console.log(`background script sent a response: ${message.response}`);
+}
+
+function handleError(error) {
+	console.log(`Error: ${error}`);
+}
+
+var sending = browser.runtime.sendMessage({});
+sending.then(handleResponse, handleError); 
+
 var isValidAddr = function(addr){
-	return false;
+	return ;
 }
 
 var callback = function(mutationList) {
