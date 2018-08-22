@@ -7,19 +7,22 @@ var config = { attributes: false, childList: true, subtree: true };
 var domainList = null;
 
 function handleResponse(message) {
+	console.log("!!!!")
 	domainList = message;
-	console.log(`background script sent a response: ${message.response}`);
+	console.log(message);
 }
 
 function handleError(error) {
-	console.log(`Error: ${error}`);
+	console.log(`My Error: ${error}`);
 }
 
+console.log("sending req")
 var sending = browser.runtime.sendMessage({});
 sending.then(handleResponse, handleError); 
 
 var isValidAddr = function(addr){
-	return ;
+	var dm = addr.split('@')[1];
+	return (domainList.indexOf(dm) != -1);
 }
 
 var callback = function(mutationList) {
